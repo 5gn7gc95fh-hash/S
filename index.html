@@ -1,423 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#f8fafc" />
-<title>PRECIOS SMARTPHONE</title>
-<style>
-:root{--bg:#f8fafc;--panel:#fff;--soft:#eef2f7;--line:#d8e0ea;--text:#0f172a;--muted:#64748b;--accent:#ea580c;--accent-soft:#fff7ed;--ok:#15803d;--danger:#dc2626;--shadow:0 6px 18px rgba(15,23,42,.06);--r:14px}
-*{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;text-transform:uppercase}
-body{min-height:100vh}
-.wrap{max-width:760px;margin:0 auto;padding:max(10px,env(safe-area-inset-top)) 10px max(18px,env(safe-area-inset-bottom))}
-.top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
-.title{font-size:1rem;font-weight:900;letter-spacing:.4px;margin:0}
-.badge{padding:5px 8px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:.62rem;color:var(--muted);white-space:nowrap}
-.panel,details{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
-details{overflow:hidden;margin-bottom:8px}
-summary{list-style:none;padding:10px 12px;font-size:.78rem;font-weight:900;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-summary::-webkit-details-marker{display:none}
-.panel{padding:10px}
-.row{display:grid;gap:6px} .r2{grid-template-columns:1fr 1fr} .r3{grid-template-columns:repeat(3,minmax(0,1fr))} .r4{grid-template-columns:repeat(4,minmax(0,1fr))}
-label{display:block;font-size:.60rem;color:var(--muted);font-weight:900;margin-bottom:3px;letter-spacing:.3px}
-input,select,button,textarea{font:inherit}
-input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);padding:10px 11px;font-size:.78rem;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#fdba74;box-shadow:0 0 0 3px rgba(251,146,60,.18)}
-textarea{min-height:64px;resize:vertical}
-button{border:0;border-radius:12px;padding:10px 12px;font-weight:900;font-size:.72rem;cursor:pointer}
-.btn{background:var(--accent);color:#fff}
-.btn.soft{background:var(--soft);color:var(--text);border:1px solid var(--line)}
-.btn.ghost{background:#fff;color:var(--text);border:1px solid var(--line)}
-.btn.danger{background:#fff1f2;color:#991b1b;border:1px solid #fecdd3}
-.toolbar{display:grid;grid-template-columns:1fr .95fr auto;gap:6px;margin-bottom:8px}
-.compact-note{font-size:.64rem;color:var(--muted);line-height:1.3}
-.modebar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px}
-.modebtn{background:#fff;border:1px solid var(--line);color:var(--text)}
-.modebtn.active{background:var(--accent-soft);border-color:#fdba74;color:#9a3412}
-.hidden{display:none !important}
-.status{font-size:.68rem;color:var(--muted)}
-.empty{padding:18px 12px;text-align:center;color:var(--muted);font-size:.78rem}
-.group{margin-top:10px}
-.grouphead{position:sticky;top:0;background:var(--bg);padding:2px 0 6px;z-index:1}
-.groupchip{display:inline-flex;gap:6px;align-items:center;padding:5px 9px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.66rem;font-weight:900}
-.subhead{font-size:.68rem;color:var(--muted);font-weight:900;margin:6px 2px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px;margin-bottom:7px;box-shadow:var(--shadow)}
-.headline{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.name{font-size:.80rem;font-weight:900;line-height:1.15}
-.meta{font-size:.60rem;color:var(--muted);font-weight:800;margin-top:3px;line-height:1.25}
-.sale{text-align:right;min-width:90px}
-.sale .label{font-size:.56rem;color:var(--muted);font-weight:900}
-.sale .value{font-size:1rem;font-weight:900;color:var(--accent);line-height:1}
-.prices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:8px}
-.pill{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:6px 7px;min-height:56px}
-.pill .k{font-size:.54rem;color:var(--muted);font-weight:900;line-height:1.1}
-.pill .v{font-size:.76rem;font-weight:900;margin-top:3px;line-height:1.1}
-.pill .s{font-size:.56rem;color:var(--muted);margin-top:2px;line-height:1.1}
-.pill.saleon{background:var(--accent-soft);border-color:#fdba74}
-.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:7px}
-.actions{display:flex;gap:6px}
-.actions button{padding:7px 9px;font-size:.64rem;border-radius:10px}
-.small{font-size:.60rem;color:var(--muted);font-weight:800}
-hr.sep{border:0;border-top:1px solid var(--line);margin:8px 0}
-@media (max-width:560px){.toolbar{grid-template-columns:1fr 1fr} .toolbar > *:first-child{grid-column:1/-1} .r4{grid-template-columns:1fr 1fr} .prices{grid-template-columns:1fr 1fr} .sale{min-width:76px}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>CENTRAL PHONE - Control de Precios</title>
+  <style>
+    :root{
+      --bg:#07111f; --panel:#0d1b2f; --panel2:#10233d; --text:#eef6ff; --muted:#9db0c6;
+      --line:#223b5d; --accent:#ff8a00; --accent2:#22c55e; --danger:#ef4444; --warn:#f59e0b;
+      --input:#0b1728; --shadow: 0 18px 45px rgba(0,0,0,.28); --radius:18px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+    body{min-height:100vh;padding:14px;padding-bottom:96px;background:radial-gradient(circle at top,#142946 0,#07111f 48%,#050b14 100%)}
+    .app{max-width:1120px;margin:0 auto}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:4px 0 14px}
+    .brand{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#ff8a00,#ffd166);display:grid;place-items:center;color:#111;font-weight:900;box-shadow:var(--shadow)}
+    h1{font-size:20px;line-height:1.1;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}.grid{display:grid;grid-template-columns:1fr;gap:12px}.card{background:rgba(13,27,47,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}.card h2{font-size:16px;margin:0 0 10px}.row{display:grid;grid-template-columns:1fr;gap:10px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px} input,select,textarea{width:100%;border:1px solid var(--line);background:var(--input);color:var(--text);border-radius:13px;padding:12px;font-size:16px;outline:none} textarea{min-height:112px;resize:vertical} input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+    .btns{display:flex;flex-wrap:wrap;gap:8px}.btn{border:0;border-radius:13px;padding:11px 13px;font-weight:800;color:#08111d;background:#dbeafe;cursor:pointer;font-size:14px;min-height:43px}.btn.primary{background:var(--accent);color:#111}.btn.green{background:var(--accent2);color:#04120a}.btn.red{background:var(--danger);color:white}.btn.dark{background:#1e3352;color:var(--text);border:1px solid var(--line)}.btn.warn{background:var(--warn);color:#111}.btn:active{transform:scale(.99)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:12px}.stat b{font-size:20px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .list{display:grid;gap:10px}.item{background:#0b1728;border:1px solid var(--line);border-radius:16px;padding:12px}.itemTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.name{font-weight:900;font-size:16px}.meta{color:var(--muted);font-size:12px;margin-top:3px}.price{font-weight:900;font-size:20px;color:#86efac;text-align:right}.small{font-size:12px;color:var(--muted)}.pill{display:inline-flex;border:1px solid var(--line);background:#122542;color:#cfe3ff;padding:4px 8px;border-radius:999px;font-size:12px;margin:5px 5px 0 0}.itemActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.itemActions .btn{padding:8px 10px;min-height:36px;font-size:13px}
+    .tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(5,11,20,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10}.tab{appearance:none;border:0;background:transparent;color:var(--muted);padding:10px 4px;font-size:11px}.tab.active{color:#fff;background:#10233d}.tab b{display:block;font-size:18px;margin-bottom:2px}.hide{display:none!important}.notice{border-left:4px solid var(--accent);background:#111f35;color:#dbeafe;border-radius:12px;padding:10px;font-size:13px;margin:10px 0}.progress{height:10px;border-radius:999px;background:#172943;overflow:hidden}.bar{height:100%;width:0;background:var(--accent)}
+    table{width:100%;border-collapse:collapse;font-size:13px} th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left} th{color:var(--muted);font-weight:700}.right{text-align:right}.empty{text-align:center;color:var(--muted);padding:26px 10px}.file{padding:13px;background:#0b1728;border:1px dashed #43658f;border-radius:14px}
+    @media(min-width:820px){body{padding:22px;padding-bottom:22px}.grid{grid-template-columns:360px 1fr}.tabs{position:sticky;top:0;bottom:auto;border-top:0;border-bottom:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden}.tab{font-size:13px}.row{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(4,1fr)}}
+  </style>
 </head>
 <body>
-<div class="wrap">
+<div class="app">
   <div class="top">
-    <h1 class="title">PRECIOS SMARTPHONE</h1>
-    <div class="badge" id="countBadge">0 MODELOS</div>
+    <div class="brand"><div class="logo">CP</div><div><h1>CENTRAL PHONE</h1><div class="sub">Control de precios smartphones</div></div></div>
+    <button class="btn dark" onclick="installInfo()">📲 Instalar</button>
   </div>
 
-  <div class="panel" style="margin-bottom:8px;">
-    <div class="toolbar">
-      <input id="search" type="search" placeholder="BUSCAR MODELO, MARCA O CONFIGURACIÓN" />
-      <select id="providerFilter"></select>
-      <button class="btn soft" id="clearSearch">LIMPIAR</button>
-    </div>
-    <div class="compact-note">LOS MODELOS SOLO APARECEN CUANDO ESCRIBES EN BUSCAR.</div>
-  </div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="inicio" onclick="showTab('inicio')"><b>📱</b>Precios</button>
+    <button class="tab" data-tab="nuevo" onclick="showTab('nuevo')"><b>➕</b>Agregar</button>
+    <button class="tab" data-tab="importar" onclick="showTab('importar')"><b>📷</b>Importar</button>
+    <button class="tab" data-tab="historial" onclick="showTab('historial')"><b>🕘</b>Historial</button>
+    <button class="tab" data-tab="ajustes" onclick="showTab('ajustes')"><b>⚙️</b>Ajustes</button>
+  </nav>
 
-  <details>
-    <summary><span>CONFIGURACIÓN DE VENTA</span><span id="saleModeText">+20 NORMAL</span></summary>
-    <div class="panel" style="box-shadow:none;border:0;padding-top:0;">
-      <div class="row r3">
-        <div>
-          <label for="minAdd">SUMA MÍNIMA</label>
-          <input id="minAdd" type="number" step="0.01" min="0" value="15" />
-        </div>
-        <div>
-          <label for="normalAdd">SUMA NORMAL</label>
-          <input id="normalAdd" type="number" step="0.01" min="0" value="20" />
-        </div>
-        <div>
-          <label for="customPct">% PERSONALIZADO</label>
-          <input id="customPct" type="number" step="0.01" min="0" value="12" />
-        </div>
-      </div>
-      <div class="modebar">
-        <button class="modebtn active" data-mode="normal" type="button">VENDER +20</button>
-        <button class="modebtn" data-mode="min" type="button">VENDER +15</button>
-        <button class="modebtn" data-mode="custom" type="button">VENDER %</button>
-      </div>
-      <hr class="sep">
-      <div class="row r3">
-        <div>
-          <label for="debitPct">% DÉBITO</label>
-          <input id="debitPct" type="number" step="0.01" min="0" value="2.30" />
-        </div>
-        <div>
-          <label for="creditPct">% CRÉDITO</label>
-          <input id="creditPct" type="number" step="0.01" min="0" value="5.50" />
-        </div>
-        <div>
-          <label for="commVatPct">IVA SOBRE COMISIÓN</label>
-          <input id="commVatPct" type="number" step="0.01" min="0" value="15" />
-        </div>
-      </div>
-      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">
-        <button class="btn" id="saveSettings" type="button">GUARDAR CONFIGURACIÓN</button>
-        <button class="btn ghost" id="recalcAll" type="button">RECALCULAR VISTA</button>
-      </div>
-      <div class="compact-note" style="margin-top:8px;">LA APP TE MUESTRA BASE, +15, +20, % QUE EQUIVALE +15, % QUE EQUIVALE +20, PRECIO CON TU % Y TAMBIÉN DÉBITO / CRÉDITO SOBRE EL PRECIO DE VENTA ACTIVO.</div>
-    </div>
-  </details>
-
-  <details>
-    <summary><span id="formTitle">AGREGAR EQUIPO</span><span id="formModeHint">MANUAL</span></summary>
-    <div class="panel" style="box-shadow:none;border:0;padding-top:0;">
-      <div class="row r2">
-        <div><label for="provider">PROVEEDOR</label><input id="provider" type="text" placeholder="IMPORT ELECTRONIC" /></div>
-        <div><label for="brand">MARCA</label><input id="brand" type="text" placeholder="SAMSUNG" /></div>
-      </div>
-      <div class="row r2" style="margin-top:6px;">
-        <div><label for="model">MODELO</label><input id="model" type="text" placeholder="A17" /></div>
-        <div><label for="variant">CONFIGURACIÓN</label><input id="variant" type="text" placeholder="8GB / 256GB" /></div>
-      </div>
-      <div class="row r2" style="margin-top:6px;">
-        <div><label for="supplierPrice">PRECIO BASE PROVEEDOR</label><input id="supplierPrice" type="number" step="0.01" min="0" placeholder="145.95" /></div>
-        <div><label for="notes">NOTA</label><input id="notes" type="text" placeholder="COLOR / CONDICIÓN / DETALLE" /></div>
-      </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
-        <button class="btn" id="saveItem" type="button">GUARDAR</button>
-        <button class="btn ghost hidden" id="cancelEdit" type="button">CANCELAR EDICIÓN</button>
-      </div>
-    </div>
-  </details>
-
-  <div id="results"></div>
-</div>
-<script>
-(function(){
-  const STORAGE_KEY='SMARTPHONE_PRICE_APP_CLEAN_V3';
-  const SETTINGS_KEY='SMARTPHONE_PRICE_APP_CLEAN_SETTINGS_V3';
-  const SEED_ITEMS=[{"provider": "IMPORT ELECTRONIC", "brand": "SOYES", "model": "SOYES S23", "variant": "2GB / 16GB", "supplierPrice": 40.0, "normalPrice": 60.0, "minPrice": 55.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "LOGIC", "model": "G1L 3 EN 1 GAMING BUNDLE", "variant": "128GB + 10GB + 4GB", "supplierPrice": 132.05, "normalPrice": 152.05, "minPrice": 147.05, "notes": "PARLANTE", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "GT-E1272", "variant": "", "supplierPrice": 19.0, "normalPrice": 39.0, "minPrice": 34.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A06", "variant": "4GB / 128GB", "supplierPrice": 101.95, "normalPrice": 121.95, "minPrice": 116.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A07", "variant": "4GB / 128GB", "supplierPrice": 123.95, "normalPrice": 143.95, "minPrice": 138.95, "notes": "ESTUCHE", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A16", "variant": "4GB / 128GB", "supplierPrice": 136.95, "normalPrice": 156.95, "minPrice": 151.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A17", "variant": "4GB / 128GB", "supplierPrice": 172.95, "normalPrice": 192.95, "minPrice": 187.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A17", "variant": "8GB / 256GB", "supplierPrice": 234.95, "normalPrice": 254.95, "minPrice": 249.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A26 5G", "variant": "8GB / 256GB", "supplierPrice": 263.95, "normalPrice": 283.95, "minPrice": 278.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A36 5G", "variant": "8GB / 256GB", "supplierPrice": 333.95, "normalPrice": 353.95, "minPrice": 348.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "SAMSUNG", "model": "A56 5G", "variant": "8GB / 256GB", "supplierPrice": 403.95, "normalPrice": 423.95, "minPrice": 418.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X5C", "variant": "4GB / 64GB", "supplierPrice": 91.0, "normalPrice": 111.0, "minPrice": 106.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X5C", "variant": "4GB / 128GB", "supplierPrice": 111.0, "normalPrice": 131.0, "minPrice": 126.0, "notes": "CONDICIONADO 15C 256GB/4GB", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X5C PLUS", "variant": "6GB / 256GB", "supplierPrice": 144.0, "normalPrice": 164.0, "minPrice": 159.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X6C", "variant": "8GB / 256GB", "supplierPrice": 168.0, "normalPrice": 188.0, "minPrice": 183.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X7D", "variant": "8GB / 256GB", "supplierPrice": 196.0, "normalPrice": 216.0, "minPrice": 211.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X8C", "variant": "8GB / 256GB", "supplierPrice": 243.0, "normalPrice": 263.0, "minPrice": 258.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X8C", "variant": "8GB / 512GB", "supplierPrice": 283.0, "normalPrice": 303.0, "minPrice": 298.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X8D", "variant": "8GB / 256GB", "supplierPrice": 289.0, "normalPrice": 309.0, "minPrice": 304.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X8D", "variant": "8GB / 512GB", "supplierPrice": 321.0, "normalPrice": 341.0, "minPrice": 336.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "X9D", "variant": "8GB / 256GB", "supplierPrice": 338.0, "normalPrice": 358.0, "minPrice": 353.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "MAGIC 7 LITE 5G", "variant": "8GB / 256GB", "supplierPrice": 301.0, "normalPrice": 321.0, "minPrice": 316.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "MAGIC 7 LITE 5G", "variant": "8GB / 512GB", "supplierPrice": 352.0, "normalPrice": 372.0, "minPrice": 367.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "MAGIC 8 LITE 5G", "variant": "8GB / 256GB", "supplierPrice": 350.0, "normalPrice": 370.0, "minPrice": 365.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "MAGIC 8 LITE 5G", "variant": "8GB / 512GB", "supplierPrice": 401.0, "normalPrice": 421.0, "minPrice": 416.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "H400 LITE", "variant": "12GB / 256GB", "supplierPrice": 298.0, "normalPrice": 318.0, "minPrice": 313.0, "notes": "CONDICIONADO CON MAGIC 7 LITE", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "H400", "variant": "12GB / 256GB", "supplierPrice": 405.0, "normalPrice": 425.0, "minPrice": 420.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "HONOR", "model": "H400", "variant": "12GB / 512GB", "supplierPrice": 454.0, "normalPrice": 474.0, "minPrice": 469.0, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "MOTOROLA", "model": "MOTO G05", "variant": "4GB / 128GB", "supplierPrice": 99.95, "normalPrice": 119.95, "minPrice": 114.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "MOTOROLA", "model": "MOTO G06", "variant": "4GB / 256GB", "supplierPrice": 124.95, "normalPrice": 144.95, "minPrice": 139.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "MOTOROLA", "model": "MOTO G15", "variant": "4GB / 512GB", "supplierPrice": 151.95, "normalPrice": 171.95, "minPrice": 166.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "SMART 10", "variant": "3GB / 64GB", "supplierPrice": 88.95, "normalPrice": 108.95, "minPrice": 103.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "SMART 10", "variant": "4GB / 128GB", "supplierPrice": 101.95, "normalPrice": 121.95, "minPrice": 116.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 64GB", "supplierPrice": 115.95, "normalPrice": 135.95, "minPrice": 130.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 128GB", "supplierPrice": 124.5, "normalPrice": 144.5, "minPrice": 139.5, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 256GB", "supplierPrice": 145.95, "normalPrice": 165.95, "minPrice": 160.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "HOT 60I", "variant": "4GB / 256GB", "supplierPrice": 146.95, "normalPrice": 166.95, "minPrice": 161.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "HOT 60I", "variant": "8GB / 256GB", "supplierPrice": 167.95, "normalPrice": 187.95, "minPrice": 182.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "HOT 60 PRO", "variant": "8GB / 256GB", "supplierPrice": 201.95, "normalPrice": 221.95, "minPrice": 216.95, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "HOT 60 PRO PLUS", "variant": "8GB / 256GB", "supplierPrice": 238.95, "normalPrice": 258.95, "minPrice": 253.95, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "NOTE 50 PRO", "variant": "8GB / 256GB", "supplierPrice": 258.95, "normalPrice": 278.95, "minPrice": 273.95, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "INFINIX", "model": "NOTE 60 PRO", "variant": "8GB / 256GB", "supplierPrice": 389.0, "normalPrice": 409.0, "minPrice": 404.0, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO1", "variant": "4GB / 128GB", "supplierPrice": 92.95, "normalPrice": 112.95, "minPrice": 107.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO2", "variant": "3GB / 64GB", "supplierPrice": 88.95, "normalPrice": 108.95, "minPrice": 103.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO2", "variant": "4GB / 128GB", "supplierPrice": 100.95, "normalPrice": 120.95, "minPrice": 115.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO2", "variant": "4GB / 256GB", "supplierPrice": 121.95, "normalPrice": 141.95, "minPrice": 136.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO3", "variant": "4GB / 64GB", "supplierPrice": 102.95, "normalPrice": 122.95, "minPrice": 117.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK GO3", "variant": "4GB / 128GB", "supplierPrice": 110.95, "normalPrice": 130.95, "minPrice": 125.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK 40", "variant": "8GB / 256GB", "supplierPrice": 147.95, "normalPrice": 167.95, "minPrice": 162.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK 40 PRO", "variant": "8GB / 256GB", "supplierPrice": 191.95, "normalPrice": 211.95, "minPrice": 206.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "SPARK 40 PRO PLUS", "variant": "8GB / 256GB", "supplierPrice": 222.95, "normalPrice": 242.95, "minPrice": 237.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "CAMON 40", "variant": "8GB / 256GB", "supplierPrice": 209.95, "normalPrice": 229.95, "minPrice": 224.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "TECNO", "model": "CAMON 50 PRO 4G", "variant": "8GB / 256GB", "supplierPrice": 316.95, "normalPrice": 336.95, "minPrice": 331.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI A5", "variant": "4GB / 64GB", "supplierPrice": 85.95, "normalPrice": 105.95, "minPrice": 100.95, "notes": "X2 PZS + 1 REDMI 15C 128GB", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI A5", "variant": "4GB / 128GB", "supplierPrice": 99.95, "normalPrice": 119.95, "minPrice": 114.95, "notes": "X2 PZS + 1 REDMI 15C 128GB", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI A7 PRO", "variant": "4GB / 128GB", "supplierPrice": 125.95, "normalPrice": 145.95, "minPrice": 140.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 14C", "variant": "4GB / 128GB", "supplierPrice": 111.95, "normalPrice": 131.95, "minPrice": 126.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 14C", "variant": "4GB / 256GB", "supplierPrice": 121.95, "normalPrice": 141.95, "minPrice": 136.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 128GB", "supplierPrice": 123.95, "normalPrice": 143.95, "minPrice": 138.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 256GB", "supplierPrice": 135.95, "normalPrice": 155.95, "minPrice": 150.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "8GB / 256GB", "supplierPrice": 151.95, "normalPrice": 171.95, "minPrice": 166.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "REDMI 15", "variant": "8GB / 256GB", "supplierPrice": 184.95, "normalPrice": 204.95, "minPrice": 199.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "NOTE 15", "variant": "8GB / 256GB", "supplierPrice": 222.95, "normalPrice": 242.95, "minPrice": 237.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "NOTE 15 PRO 4G", "variant": "8GB / 256GB", "supplierPrice": 277.95, "normalPrice": 297.95, "minPrice": 292.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "NOTE 15 PRO 5G", "variant": "8GB / 512GB", "supplierPrice": 368.95, "normalPrice": 388.95, "minPrice": 383.95, "notes": "", "updatedAt": ""}, {"provider": "IMPORT ELECTRONIC", "brand": "XIAOMI", "model": "NOTE 15 PRO+ 5G", "variant": "12GB / 512GB", "supplierPrice": 478.95, "normalPrice": 498.95, "minPrice": 493.95, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI A7", "variant": "3GB / 64GB", "supplierPrice": 102.0, "normalPrice": 122.0, "minPrice": 117.0, "notes": "BLACK-BLUE NUEVO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "A7 PRO", "variant": "4GB / 64GB", "supplierPrice": 114.0, "normalPrice": 134.0, "minPrice": 129.0, "notes": "BLACK-BLUE-GREEN NUEVO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "A7 PRO", "variant": "4GB / 128GB", "supplierPrice": 125.0, "normalPrice": 145.0, "minPrice": 140.0, "notes": "BLACK-BLUE-GREEN NUEVO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 128GB", "supplierPrice": 129.0, "normalPrice": 149.0, "minPrice": 144.0, "notes": "COLOR BLACK-BLUE-GREEN", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 128GB", "supplierPrice": 130.0, "normalPrice": 150.0, "minPrice": 145.0, "notes": "PAYJOY", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 256GB", "supplierPrice": 142.0, "normalPrice": 162.0, "minPrice": 157.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "4GB / 256GB", "supplierPrice": 143.0, "normalPrice": 163.0, "minPrice": 158.0, "notes": "PAYJOY", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "8GB / 256GB", "supplierPrice": 155.0, "normalPrice": 175.0, "minPrice": 170.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15C", "variant": "8GB / 256GB", "supplierPrice": 156.0, "normalPrice": 176.0, "minPrice": 171.0, "notes": "PAYJOY", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI 15", "variant": "8GB / 256GB", "supplierPrice": 184.0, "normalPrice": 204.0, "minPrice": 199.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI NOTE 15", "variant": "8GB / 256GB", "supplierPrice": 226.0, "normalPrice": 246.0, "minPrice": 241.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI NOTE 15 PRO", "variant": "8GB / 256GB", "supplierPrice": 282.0, "normalPrice": 302.0, "minPrice": 297.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI NOTE 15 PRO 5G", "variant": "8GB / 256GB", "supplierPrice": 345.0, "normalPrice": 365.0, "minPrice": 360.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "REDMI NOTE 15 PRO PLUS 5G", "variant": "12GB / 512GB", "supplierPrice": 476.0, "normalPrice": 496.0, "minPrice": 491.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "XIAOMI 17", "variant": "12GB / 512GB", "supplierPrice": 970.0, "normalPrice": 990.0, "minPrice": 985.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "XIAOMI", "model": "XIAOMI 17 ULTRA", "variant": "16GB / 512GB", "supplierPrice": 1360.0, "normalPrice": 1380.0, "minPrice": 1375.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 64GB", "supplierPrice": 110.0, "normalPrice": 130.0, "minPrice": 125.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 128GB", "supplierPrice": 121.0, "normalPrice": 141.0, "minPrice": 136.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "SMART 20", "variant": "4GB / 256GB", "supplierPrice": 150.0, "normalPrice": 170.0, "minPrice": 165.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "HOT 60I", "variant": "4GB / 256GB", "supplierPrice": 144.0, "normalPrice": 164.0, "minPrice": 159.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "HOT 60I", "variant": "8GB / 256GB", "supplierPrice": 165.0, "normalPrice": 185.0, "minPrice": 180.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "HOT 60 PRO", "variant": "8GB / 256GB", "supplierPrice": 200.0, "normalPrice": 220.0, "minPrice": 215.0, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "HOT 60 PRO PLUS", "variant": "8GB / 256GB", "supplierPrice": 234.0, "normalPrice": 254.0, "minPrice": 249.0, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "NOTE 50 PRO", "variant": "8GB / 256GB", "supplierPrice": 254.0, "normalPrice": 274.0, "minPrice": 269.0, "notes": "RAM EXTENDIDA", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "NOTE 60", "variant": "8GB / 256GB", "supplierPrice": 280.0, "normalPrice": 300.0, "minPrice": 295.0, "notes": "NUEVO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "INFINIX", "model": "NOTE 60 PRO", "variant": "8GB / 256GB", "supplierPrice": 370.0, "normalPrice": 390.0, "minPrice": 385.0, "notes": "NUEVO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "TECNO", "model": "CAMON 40", "variant": "8GB / 256GB", "supplierPrice": 204.0, "normalPrice": 224.0, "minPrice": 219.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A06", "variant": "4GB / 64GB", "supplierPrice": 90.0, "normalPrice": 110.0, "minPrice": 105.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A07", "variant": "4GB / 128GB", "supplierPrice": 122.0, "normalPrice": 142.0, "minPrice": 137.0, "notes": "GRATIS SOPORTE CELU", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A07", "variant": "4GB / 128GB", "supplierPrice": 125.0, "normalPrice": 145.0, "minPrice": 140.0, "notes": "+ CARGADOR 25W", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A16", "variant": "4GB / 128GB", "supplierPrice": 132.0, "normalPrice": 152.0, "minPrice": 147.0, "notes": "GRATIS SOPORTE CELU", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A17", "variant": "4GB / 128GB", "supplierPrice": 170.0, "normalPrice": 190.0, "minPrice": 185.0, "notes": "GRATIS SOPORTE CELU", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A17", "variant": "8GB / 256GB", "supplierPrice": 230.0, "normalPrice": 250.0, "minPrice": 245.0, "notes": "GRATIS VASO TÉRMICO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A26 5G", "variant": "8GB / 256GB", "supplierPrice": 272.0, "normalPrice": 292.0, "minPrice": 287.0, "notes": "GRATIS VASO TÉRMICO", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A56 5G", "variant": "8GB / 128GB", "supplierPrice": 350.0, "normalPrice": 370.0, "minPrice": 365.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A56 5G", "variant": "12GB / 256GB", "supplierPrice": 395.0, "normalPrice": 415.0, "minPrice": 410.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "A56 5G", "variant": "12GB / 256GB", "supplierPrice": 410.0, "normalPrice": 430.0, "minPrice": 425.0, "notes": "PROMO BUDS CORE", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "S25 FE", "variant": "8GB / 256GB", "supplierPrice": 690.0, "normalPrice": 710.0, "minPrice": 705.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "S26", "variant": "12GB / 512GB", "supplierPrice": 1050.0, "normalPrice": 1070.0, "minPrice": 1065.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "S25 ULTRA", "variant": "12GB / 512GB", "supplierPrice": 1150.0, "normalPrice": 1170.0, "minPrice": 1165.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "S26 PLUS", "variant": "12GB / 512GB", "supplierPrice": 1300.0, "normalPrice": 1320.0, "minPrice": 1315.0, "notes": "", "updatedAt": ""}, {"provider": "PROVEEDOR 2", "brand": "SAMSUNG", "model": "S26 ULTRA", "variant": "12GB / 512GB", "supplierPrice": 1500.0, "normalPrice": 1520.0, "minPrice": 1515.0, "notes": "", "updatedAt": ""}];
-
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-  const els = {
-    search: $('#search'), providerFilter: $('#providerFilter'), clearSearch: $('#clearSearch'),
-    results: $('#results'), countBadge: $('#countBadge'), saleModeText: $('#saleModeText'),
-    minAdd: $('#minAdd'), normalAdd: $('#normalAdd'), customPct: $('#customPct'),
-    debitPct: $('#debitPct'), creditPct: $('#creditPct'), commVatPct: $('#commVatPct'),
-    saveSettings: $('#saveSettings'), recalcAll: $('#recalcAll'),
-    provider: $('#provider'), brand: $('#brand'), model: $('#model'), variant: $('#variant'), supplierPrice: $('#supplierPrice'), notes: $('#notes'),
-    saveItem: $('#saveItem'), cancelEdit: $('#cancelEdit'), formTitle: $('#formTitle'), formModeHint: $('#formModeHint')
-  };
-
-  let state = {
-    items: loadItems(),
-    settings: loadSettings(),
-    editingId: null
-  };
-
-  function loadItems(){
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return SEED_ITEMS.map(withIdAndUpdate);
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) && parsed.length ? parsed.map(withIdAndUpdate) : SEED_ITEMS.map(withIdAndUpdate);
-    } catch(err) {
-      return SEED_ITEMS.map(withIdAndUpdate);
-    }
-  }
-
-  function withIdAndUpdate(item){
-    const copy = Object.assign({}, item);
-    copy.id = copy.id || cryptoRandom();
-    copy.updatedAt = copy.updatedAt || nowText();
-    copy.provider = up(copy.provider);
-    copy.brand = up(copy.brand);
-    copy.model = up(copy.model);
-    copy.variant = up(copy.variant);
-    copy.notes = up(copy.notes);
-    copy.supplierPrice = Number(copy.supplierPrice || 0);
-    return copy;
-  }
-
-  function loadSettings(){
-    try {
-      const raw = localStorage.getItem(SETTINGS_KEY);
-      if (raw) return Object.assign(defaultSettings(), JSON.parse(raw));
-    } catch(err){}
-    return defaultSettings();
-  }
-
-  function defaultSettings(){
-    return { minAdd:15, normalAdd:20, customPct:12, saleMode:'normal', debitPct:2.30, creditPct:5.50, commVatPct:15 };
-  }
-
-  function saveItems(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items)); }
-  function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(state.settings)); }
-  function cryptoRandom(){ return 'i' + Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4); }
-  function nowText(){ const d=new Date(); const p=n=>String(n).padStart(2,'0'); return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
-  function up(v){ return String(v||'').trim().toUpperCase(); }
-  function n(v){ const x=Number(v); return Number.isFinite(x)?x:0; }
-  function money(v){ return '$ ' + n(v).toFixed(2); }
-  function pct(v){ return n(v).toFixed(2) + '%'; }
-  function round2(v){ return Math.round((n(v)+Number.EPSILON)*100)/100; }
-  function commissionMultiplier(percent){ return 1 + n(percent)/100 + (n(percent)/100)*(n(state.settings.commVatPct)/100); }
-  function plusPercent(base, percent){ return round2(n(base) * (1 + n(percent)/100)); }
-  function plusFixed(base, add){ return round2(n(base) + n(add)); }
-  function fixedPct(base, add){ base=n(base); add=n(add); return base>0 ? round2(add/base*100) : 0; }
-  function cardPrice(baseSale, percent){ return round2(n(baseSale) * commissionMultiplier(percent)); }
-
-  function syncSettingsToUi(){
-    els.minAdd.value = state.settings.minAdd;
-    els.normalAdd.value = state.settings.normalAdd;
-    els.customPct.value = state.settings.customPct;
-    els.debitPct.value = state.settings.debitPct;
-    els.creditPct.value = state.settings.creditPct;
-    els.commVatPct.value = state.settings.commVatPct;
-    updateModeButtons();
-  }
-
-  function readSettingsFromUi(){
-    state.settings.minAdd = n(els.minAdd.value);
-    state.settings.normalAdd = n(els.normalAdd.value);
-    state.settings.customPct = n(els.customPct.value);
-    state.settings.debitPct = n(els.debitPct.value);
-    state.settings.creditPct = n(els.creditPct.value);
-    state.settings.commVatPct = n(els.commVatPct.value);
-  }
-
-  function updateModeButtons(){
-    $$('.modebtn').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === state.settings.saleMode));
-    const map = {min:`+${state.settings.minAdd} MÍNIMO`, normal:`+${state.settings.normalAdd} NORMAL`, custom:`${state.settings.customPct}% PERSONAL`};
-    els.saleModeText.textContent = map[state.settings.saleMode] || map.normal;
-  }
-
-  function getSalePack(item){
-    const base = n(item.supplierPrice);
-    const minPrice = plusFixed(base, state.settings.minAdd);
-    const normalPrice = plusFixed(base, state.settings.normalAdd);
-    const customPrice = plusPercent(base, state.settings.customPct);
-    const pct15 = fixedPct(base, state.settings.minAdd);
-    const pct20 = fixedPct(base, state.settings.normalAdd);
-    let sale = normalPrice;
-    if (state.settings.saleMode === 'min') sale = minPrice;
-    if (state.settings.saleMode === 'custom') sale = customPrice;
-    return { base, minPrice, normalPrice, customPrice, pct15, pct20, sale, debit: cardPrice(sale, state.settings.debitPct), credit: cardPrice(sale, state.settings.creditPct) };
-  }
-
-  function buildProviderFilter(){
-    const current = els.providerFilter.value || 'TODOS';
-    const providers = ['TODOS', ...new Set(state.items.map(x => up(x.provider)).filter(Boolean).sort())];
-    els.providerFilter.innerHTML = providers.map(p => `<option value="${p}">${p}</option>`).join('');
-    els.providerFilter.value = providers.includes(current) ? current : 'TODOS';
-  }
-
-  function filteredItems(){
-    const q = up(els.search.value);
-    const provider = up(els.providerFilter.value);
-    if (!q) return [];
-    return state.items.filter(item => {
-      const hitProvider = provider === 'TODOS' || up(item.provider) === provider;
-      const hay = [item.provider, item.brand, item.model, item.variant, item.notes].map(up).join(' ');
-      return hitProvider && hay.includes(q);
-    }).sort((a,b) => {
-      return up(a.provider).localeCompare(up(b.provider)) || up(a.brand).localeCompare(up(b.brand)) || up(a.model).localeCompare(up(b.model)) || up(a.variant).localeCompare(up(b.variant));
-    });
-  }
-
-  function render(){
-    buildProviderFilter();
-    const list = filteredItems();
-    els.countBadge.textContent = `${list.length} MODELOS`;
-    if (!up(els.search.value)) {
-      els.results.innerHTML = `<div class="panel empty">ESCRIBE EN BUSCAR PARA VER MODELOS.</div>`;
-      return;
-    }
-    if (!list.length) {
-      els.results.innerHTML = `<div class="panel empty">NO HAY RESULTADOS CON ESA BÚSQUEDA.</div>`;
-      return;
-    }
-    let html = '';
-    let lastProvider = '', lastBrand = '';
-    list.forEach(item => {
-      const calc = getSalePack(item);
-      if (item.provider !== lastProvider) {
-        html += `<div class="group"><div class="grouphead"><span class="groupchip">PROVEEDOR: ${escapeHtml(item.provider)}</span></div>`;
-        lastProvider = item.provider; lastBrand = '';
-      }
-      if (item.brand !== lastBrand) {
-        html += `<div class="subhead">MARCA: ${escapeHtml(item.brand)}</div>`;
-        lastBrand = item.brand;
-      }
-      html += cardHtml(item, calc);
-    });
-    html += '</div>';
-    els.results.innerHTML = html;
-    $$('.edit-btn').forEach(btn => btn.addEventListener('click', () => startEdit(btn.dataset.id)));
-    $$('.delete-btn').forEach(btn => btn.addEventListener('click', () => deleteItem(btn.dataset.id)));
-  }
-
-  function salePillClass(type){ return state.settings.saleMode === type ? 'pill saleon' : 'pill'; }
-
-  function cardHtml(item, calc){
-    return `
+  <section id="inicio" class="screen">
+    <div class="grid">
       <div class="card">
-        <div class="headline">
-          <div>
-            <div class="name">${escapeHtml(item.model)}${item.variant ? ' · ' + escapeHtml(item.variant) : ''}</div>
-            <div class="meta">${escapeHtml(item.provider)} · ${escapeHtml(item.brand)}${item.notes ? ' · ' + escapeHtml(item.notes) : ''}</div>
-          </div>
-          <div class="sale">
-            <div class="label">VENTA</div>
-            <div class="value">${money(calc.sale)}</div>
-          </div>
+        <h2>Resumen</h2>
+        <div class="stats">
+          <div class="stat"><b id="stTotal">0</b><span>Modelos</span></div>
+          <div class="stat"><b id="stMargin">20.00</b><span>Margen actual</span></div>
+          <div class="stat"><b id="stToday">0</b><span>Actualizados hoy</span></div>
+          <div class="stat"><b id="stAvg">0.00</b><span>Promedio venta</span></div>
         </div>
-        <div class="prices">
-          <div class="pill"><div class="k">BASE</div><div class="v">${money(calc.base)}</div><div class="s">PROVEEDOR</div></div>
-          <div class="${salePillClass('min')}"><div class="k">MÍNIMO</div><div class="v">${money(calc.minPrice)}</div><div class="s">+${money(state.settings.minAdd).replace('$ ','')} · ${pct(calc.pct15)}</div></div>
-          <div class="${salePillClass('normal')}"><div class="k">NORMAL</div><div class="v">${money(calc.normalPrice)}</div><div class="s">+${money(state.settings.normalAdd).replace('$ ','')} · ${pct(calc.pct20)}</div></div>
-          <div class="${salePillClass('custom')}"><div class="k">PERSONAL</div><div class="v">${money(calc.customPrice)}</div><div class="s">${pct(state.settings.customPct)}</div></div>
-          <div class="pill"><div class="k">DÉBITO</div><div class="v">${money(calc.debit)}</div><div class="s">SOBRE VENTA</div></div>
-          <div class="pill"><div class="k">CRÉDITO</div><div class="v">${money(calc.credit)}</div><div class="s">SOBRE VENTA</div></div>
-          <div class="pill"><div class="k">% +${money(state.settings.minAdd).replace('$ ','')}</div><div class="v">${pct(calc.pct15)}</div><div class="s">EQUIVALENCIA</div></div>
-          <div class="pill"><div class="k">% +${money(state.settings.normalAdd).replace('$ ','')}</div><div class="v">${pct(calc.pct20)}</div><div class="s">EQUIVALENCIA</div></div>
+        <div class="notice">El precio de venta se calcula como: <b>precio proveedor + margen</b>. Puedes usar margen general o margen individual por equipo.</div>
+        <div class="row2">
+          <div><label>Margen general</label><input id="globalMarginTop" type="number" step="0.01" value="20.00" oninput="setGlobalMargin(this.value)"></div>
+          <div><label>Filtrar marca</label><select id="brandFilter" onchange="render()"><option value="">Todas</option></select></div>
         </div>
-        <div class="cardfoot">
-          <div class="small">ACTUALIZADO: ${escapeHtml(item.updatedAt || '')}</div>
-          <div class="actions">
-            <button class="btn ghost edit-btn" data-id="${item.id}" type="button">EDITAR</button>
-            <button class="btn danger delete-btn" data-id="${item.id}" type="button">ELIMINAR</button>
-          </div>
+        <div style="margin-top:10px"><label>Buscar modelo</label><input id="search" placeholder="Ej: A15, Redmi, Infinix..." oninput="render()"></div>
+        <div class="btns" style="margin-top:12px">
+          <button class="btn primary" onclick="showTab('nuevo')">➕ Agregar</button>
         </div>
-      </div>`;
-  }
+      </div>
+      <div class="card"><h2>Lista actual</h2><div id="list" class="list"></div></div>
+    </div>
+  </section>
 
-  function escapeHtml(v){ return String(v ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+  <section id="nuevo" class="screen hide">
+    <div class="card">
+      <h2 id="formTitle">Agregar smartphone</h2>
+      <input id="editId" type="hidden">
+      <div class="row3">
+        <div><label>Marca</label><input id="brand" placeholder="Samsung"></div>
+        <div><label>Modelo</label><input id="model" placeholder="A15"></div>
+        <div><label>Memoria</label><input id="memory" placeholder="8/256GB"></div>
+      </div>
+      <div class="row3" style="margin-top:10px">
+        <div><label>Precio proveedor</label><input id="cost" type="number" step="0.01" placeholder="165.00"></div>
+        <div><label>Margen individual</label><input id="margin" type="number" step="0.01" placeholder="Vacío = margen general"></div>
+        <div><label>Stock</label><input id="qty" type="number" step="1" value="1"></div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div><label>Proveedor</label><input id="supplier" placeholder="Importadora / WhatsApp / proveedor"></div>
+        <div><label>Fecha actualización</label><input id="date" type="date"></div>
+      </div>
+      <div style="margin-top:10px"><label>Nota</label><textarea id="note" placeholder="Color, promoción, normal/contado, observación..."></textarea></div>
+      <div class="btns" style="margin-top:12px">
+        <button class="btn primary" onclick="saveItem()">💾 Guardar</button>
+        <button class="btn dark" onclick="clearForm()">🧹 Limpiar</button>
+        <button class="btn red" onclick="cancelEdit()">Cancelar</button>
+      </div>
+    </div>
+  </section>
 
-  function resetForm(){
-    state.editingId = null;
-    els.provider.value = ''; els.brand.value = ''; els.model.value = ''; els.variant.value = ''; els.supplierPrice.value = ''; els.notes.value = '';
-    els.formTitle.textContent = 'AGREGAR EQUIPO';
-    els.formModeHint.textContent = 'MANUAL';
-    els.cancelEdit.classList.add('hidden');
-  }
+  <section id="importar" class="screen hide">
+    <div class="grid">
+      <div class="card">
+        <h2>Importar desde texto</h2>
+        <div class="notice">Pega líneas como: <b>Samsung A15 8/256 165</b>. El sistema toma el último número como precio proveedor.</div>
+        <textarea id="bulkText" placeholder="Samsung A15 8/256 165\nRedmi Note 13 8/256 160"></textarea>
+        <div class="row2" style="margin-top:10px">
+          <div><label>Proveedor para estos precios</label><input id="bulkSupplier" placeholder="Proveedor"></div>
+          <div><label>Fecha</label><input id="bulkDate" type="date"></div>
+        </div>
+        <div class="btns" style="margin-top:12px"><button class="btn primary" onclick="previewBulk()">👁️ Revisar</button><button class="btn green" onclick="importPreview()">✅ Importar revisados</button></div>
+      </div>
+      <div class="card">
+        <h2>OCR desde foto o PDF</h2>
+        <div class="file"><input id="ocrFile" type="file" accept="image/*,.pdf" onchange="runOCR()"></div>
+        <div class="notice">Funciona con internet porque usa librerías CDN. Si la foto está borrosa, revisa antes de importar. Los PDF tipo imagen también se intentan leer.</div>
+        <div class="progress"><div id="ocrBar" class="bar"></div></div>
+        <p id="ocrStatus" class="small">Sin archivo cargado.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px"><h2>Vista previa</h2><div id="preview"></div></div>
+  </section>
 
-  function startEdit(id){
-    const item = state.items.find(x => x.id === id); if (!item) return;
-    state.editingId = id;
-    els.provider.value = item.provider || '';
-    els.brand.value = item.brand || '';
-    els.model.value = item.model || '';
-    els.variant.value = item.variant || '';
-    els.supplierPrice.value = item.supplierPrice || '';
-    els.notes.value = item.notes || '';
-    els.formTitle.textContent = 'EDITAR EQUIPO';
-    els.formModeHint.textContent = 'ACTIVO';
-    els.cancelEdit.classList.remove('hidden');
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
+  <section id="historial" class="screen hide">
+    <div class="card"><h2>Historial de cambios</h2><div class="btns" style="margin-bottom:10px"><button class="btn dark" onclick="exportHistoryCSV()">⬇️ Exportar historial CSV</button><button class="btn red" onclick="clearHistory()">🗑️ Borrar historial</button></div><div id="historyBox"></div></div>
+  </section>
 
-  function saveFormItem(){
-    const payload = {
-      provider: up(els.provider.value), brand: up(els.brand.value), model: up(els.model.value), variant: up(els.variant.value),
-      supplierPrice: round2(els.supplierPrice.value), notes: up(els.notes.value), updatedAt: nowText()
-    };
-    if (!payload.provider || !payload.brand || !payload.model || !payload.supplierPrice) {
-      alert('PON PROVEEDOR, MARCA, MODELO Y PRECIO BASE.'); return;
-    }
-    if (state.editingId) {
-      const idx = state.items.findIndex(x => x.id === state.editingId);
-      if (idx >= 0) state.items[idx] = Object.assign({}, state.items[idx], payload);
-    } else {
-      payload.id = cryptoRandom();
-      state.items.unshift(payload);
-    }
-    saveItems();
-    buildProviderFilter();
-    resetForm();
-    render();
-  }
+  <section id="ajustes" class="screen hide">
+    <div class="grid">
+      <div class="card">
+        <h2>Ajustes</h2>
+        <label>Margen general</label><input id="globalMargin" type="number" step="0.01" value="20.00" oninput="setGlobalMargin(this.value)">
+        <div class="btns" style="margin-top:12px"><button class="btn primary" onclick="setPresetMargin(15)">Margen 15.00</button><button class="btn primary" onclick="setPresetMargin(20)">Margen 20.00</button><button class="btn green" onclick="recalcAll()">Recalcular todo</button></div>
+      </div>
+      <div class="card">
+        <h2>Datos</h2>
+        <div class="btns"><button class="btn red" onclick="wipeAll()">🧨 Borrar todo</button></div>
+        <div class="notice">Para GitHub Pages: sube este archivo como <b>index.html</b>. Los datos se guardan en el navegador del dispositivo.</div>
+      </div>
+    </div>
+  </section>
+</div>
 
-  function deleteItem(id){
-    const item = state.items.find(x => x.id === id);
-    if (!item) return;
-    if (!confirm(`ELIMINAR ${item.model}${item.variant ? ' · ' + item.variant : ''}?`)) return;
-    state.items = state.items.filter(x => x.id !== id);
-    saveItems();
-    render();
-  }
-
-  // events
-  els.search.addEventListener('input', render);
-  els.providerFilter.addEventListener('change', render);
-  els.clearSearch.addEventListener('click', () => { els.search.value=''; render(); els.search.focus(); });
-  els.saveSettings.addEventListener('click', () => { readSettingsFromUi(); saveSettings(); updateModeButtons(); render(); });
-  els.recalcAll.addEventListener('click', () => { readSettingsFromUi(); updateModeButtons(); render(); });
-  $$('.modebtn').forEach(btn => btn.addEventListener('click', () => { readSettingsFromUi(); state.settings.saleMode = btn.dataset.mode; saveSettings(); updateModeButtons(); render(); }));
-  ['minAdd','normalAdd','customPct','debitPct','creditPct','commVatPct'].forEach(id => els[id].addEventListener('input', () => { readSettingsFromUi(); updateModeButtons(); render(); }));
-  els.saveItem.addEventListener('click', saveFormItem);
-  els.cancelEdit.addEventListener('click', resetForm);
-
-  syncSettingsToUi();
-  buildProviderFilter();
-  resetForm();
-  render();
-})();
+<script>
+const KEY='central_phone_price_app_v1';
+let db = load(); let previewRows=[];
+function today(){return new Date().toISOString().slice(0,10)}
+function money(n){return (Number(n)||0).toFixed(2)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{settings:{margin:20},items:[],history:[]}}catch(e){return {settings:{margin:20},items:[],history:[]}}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(db));}
+function showTab(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hide'));document.getElementById(id).classList.remove('hide');document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));render();}
+function setGlobalMargin(v){db.settings.margin=Number(v)||0;document.getElementById('globalMargin').value=money(db.settings.margin);document.getElementById('globalMarginTop').value=money(db.settings.margin);persist();render();}
+function setPresetMargin(v){setGlobalMargin(v)}
+function salePrice(item){return (Number(item.cost)||0)+(item.margin===''||item.margin==null?Number(db.settings.margin)||0:Number(item.margin)||0)}
+function normalize(s){return (s||'').toString().trim().replace(/\s+/g,' ').toUpperCase()}
+function inferBrand(line){const brands=['SAMSUNG','XIAOMI','REDMI','POCO','INFINIX','TECNO','HONOR','MOTOROLA','MOTO','ZTE','REALME','OPPO','VIVO','IPHONE','APPLE','NOKIA']; const up=line.toUpperCase(); return brands.find(b=>up.includes(b))||''}
+function parseLine(line){let clean=line.replace(/[$]/g,' ').replace(/,/g,'.').replace(/\s+/g,' ').trim(); let matches=[...clean.matchAll(/(?:^|\s)(\d{2,4}(?:\.\d{1,2})?)(?=\s|$)/g)]; if(!matches.length)return null; let price=Number(matches[matches.length-1][1]); if(!price || price<10)return null; let name=clean.slice(0,matches[matches.length-1].index).replace(/[|:;-]+$/,'').trim(); if(name.length<3)return null; let brand=inferBrand(name); let memory=(name.match(/(\d+\s?GB\s*[+\/]\s*\d+\s?GB|\d+\s*\/\s*\d+\s?GB|\d+\s*\/\s*\d+)/i)||[''])[0].replace(/\s/g,''); let model=name.replace(new RegExp('^'+brand,'i'),'').trim(); if(!model)model=name; return {brand,model,memory,cost:price,margin:'',qty:1,supplier:document.getElementById('bulkSupplier').value||'',date:document.getElementById('bulkDate').value||today(),note:'Importado'};}
+function saveItem(){let id=document.getElementById('editId').value; let item={id:id||uid(),brand:normalize(document.getElementById('brand').value),model:normalize(document.getElementById('model').value),memory:normalize(document.getElementById('memory').value),cost:Number(document.getElementById('cost').value)||0,margin:document.getElementById('margin').value===''?'':Number(document.getElementById('margin').value)||0,qty:Number(document.getElementById('qty').value)||0,supplier:document.getElementById('supplier').value.trim(),date:document.getElementById('date').value||today(),note:document.getElementById('note').value.trim()};
+ if(!item.model||!item.cost){alert('Falta modelo o precio proveedor.');return}
+ let old=db.items.find(x=>x.id===id); if(old){db.history.unshift({id:uid(),itemId:id,name:(old.brand+' '+old.model+' '+old.memory).trim(),oldCost:old.cost,newCost:item.cost,oldSale:salePrice(old),newSale:salePrice(item),date:item.date,at:new Date().toISOString(),supplier:item.supplier}); db.items=db.items.map(x=>x.id===id?item:x);} else {db.items.unshift(item); db.history.unshift({id:uid(),itemId:item.id,name:(item.brand+' '+item.model+' '+item.memory).trim(),oldCost:0,newCost:item.cost,oldSale:0,newSale:salePrice(item),date:item.date,at:new Date().toISOString(),supplier:item.supplier});}
+ persist(); clearForm(); showTab('inicio');}
+function clearForm(){['editId','brand','model','memory','cost','margin','supplier','note'].forEach(id=>document.getElementById(id).value='');document.getElementById('qty').value=1;document.getElementById('date').value=today();document.getElementById('formTitle').textContent='Agregar smartphone'}
+function cancelEdit(){clearForm();showTab('inicio')}
+function editItem(id){let x=db.items.find(i=>i.id===id); if(!x)return; showTab('nuevo'); document.getElementById('formTitle').textContent='Editar smartphone'; ['editId','brand','model','memory','cost','margin','qty','supplier','date','note'].forEach(k=>{let id2=k==='editId'?'editId':k; document.getElementById(id2).value=k==='editId'?x.id:(x[k]??'')});}
+function delItem(id){if(!confirm('¿Borrar este modelo?'))return; db.items=db.items.filter(x=>x.id!==id); persist();render();}
+function duplicateItem(id){let x=db.items.find(i=>i.id===id); if(!x)return; let y={...x,id:uid(),model:x.model+' COPIA'}; db.items.unshift(y);persist();render();}
+function render(){document.getElementById('globalMargin').value=money(db.settings.margin);document.getElementById('globalMarginTop').value=money(db.settings.margin);document.getElementById('stMargin').textContent=money(db.settings.margin);let q=normalize(document.getElementById('search')?.value||'');let bf=document.getElementById('brandFilter')?.value||'';let brands=[...new Set(db.items.map(x=>x.brand).filter(Boolean))].sort(); let sel=document.getElementById('brandFilter'); let current=sel.value; sel.innerHTML='<option value="">Todas</option>'+brands.map(b=>`<option ${b===current?'selected':''}>${b}</option>`).join(''); let rows=db.items.filter(x=>(!bf||x.brand===bf)&&(!q||normalize([x.brand,x.model,x.memory,x.supplier,x.note].join(' ')).includes(q))).sort((a,b)=>(a.brand+a.model).localeCompare(b.brand+b.model));
+ document.getElementById('stTotal').textContent=db.items.length; document.getElementById('stToday').textContent=db.items.filter(x=>x.date===today()).length; document.getElementById('stAvg').textContent=money(db.items.reduce((s,x)=>s+salePrice(x),0)/(db.items.length||1));
+ document.getElementById('list').innerHTML=rows.length?rows.map(x=>`<div class="item"><div class="itemTop"><div><div class="name">${esc([x.brand,x.model,x.memory].filter(Boolean).join(' '))}</div><div class="meta">Proveedor: ${esc(x.supplier||'Sin proveedor')} · Fecha: ${esc(x.date||'')}</div><span class="pill">Base $${money(x.cost)}</span><span class="pill">Margen $${money(x.margin===''||x.margin==null?db.settings.margin:x.margin)}</span><span class="pill">Stock ${x.qty||0}</span></div><div class="price">$${money(salePrice(x))}</div></div>${x.note?`<div class="small" style="margin-top:8px">${esc(x.note)}</div>`:''}<div class="itemActions"><button class="btn dark" onclick="editItem('${x.id}')">Editar</button><button class="btn dark" onclick="duplicateItem('${x.id}')">Duplicar</button><button class="btn red" onclick="delItem('${x.id}')">Borrar</button></div></div>`).join(''):'<div class="empty">Sin modelos. Agrega o importa precios.</div>';
+ renderHistory();}
+function esc(s){return String(s||'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]))}
+function previewBulk(){let lines=document.getElementById('bulkText').value.split(/\n+/); previewRows=lines.map(parseLine).filter(Boolean); renderPreview();}
+function renderPreview(){document.getElementById('preview').innerHTML=previewRows.length?`<table><thead><tr><th>Marca</th><th>Modelo</th><th>Memoria</th><th class="right">Base</th><th class="right">Venta</th></tr></thead><tbody>${previewRows.map((r,i)=>`<tr><td contenteditable oninput="previewRows[${i}].brand=this.textContent">${esc(r.brand)}</td><td contenteditable oninput="previewRows[${i}].model=this.textContent">${esc(r.model)}</td><td contenteditable oninput="previewRows[${i}].memory=this.textContent">${esc(r.memory)}</td><td class="right" contenteditable oninput="previewRows[${i}].cost=Number(this.textContent)||0">${money(r.cost)}</td><td class="right">${money((Number(r.cost)||0)+Number(db.settings.margin||0))}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay datos revisados.</div>';}
+function importPreview(){if(!previewRows.length){alert('Primero revisa/importa texto.');return} previewRows.forEach(r=>{let existing=db.items.find(x=>normalize(x.brand+' '+x.model+' '+x.memory)===normalize(r.brand+' '+r.model+' '+r.memory)); if(existing){let old={...existing}; Object.assign(existing,r,{id:existing.id}); db.history.unshift({id:uid(),itemId:existing.id,name:(existing.brand+' '+existing.model+' '+existing.memory).trim(),oldCost:old.cost,newCost:existing.cost,oldSale:salePrice(old),newSale:salePrice(existing),date:existing.date,at:new Date().toISOString(),supplier:existing.supplier});}else{r.id=uid(); db.items.unshift(r); db.history.unshift({id:uid(),itemId:r.id,name:(r.brand+' '+r.model+' '+r.memory).trim(),oldCost:0,newCost:r.cost,oldSale:0,newSale:salePrice(r),date:r.date,at:new Date().toISOString(),supplier:r.supplier});}}); previewRows=[]; document.getElementById('bulkText').value=''; persist(); renderPreview(); showTab('inicio');}
+async function runOCR(){const f=document.getElementById('ocrFile').files[0]; if(!f)return; setOcr(5,'Cargando librerías...'); await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'); let texts=[]; if(f.type==='application/pdf'||f.name.toLowerCase().endsWith('.pdf')){await loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs','module').catch(()=>{}); alert('Para PDF escaneado, si el navegador no deja leerlo, convierte el PDF a imagen y súbelo.'); setOcr(0,'PDF detectado. Recomendado: subir captura/imagen para OCR más estable.'); return;} else {setOcr(20,'Leyendo imagen...'); const res=await Tesseract.recognize(f,'eng+spa',{logger:m=>{if(m.progress)setOcr(20+Math.round(m.progress*70),m.status)}}); texts.push(res.data.text);} document.getElementById('bulkText').value=texts.join('\n'); setOcr(100,'OCR terminado. Revisa el texto antes de importar.'); previewBulk();}
+function setOcr(p,msg){document.getElementById('ocrBar').style.width=p+'%';document.getElementById('ocrStatus').textContent=msg}
+function loadScript(src,type){return new Promise((res,rej)=>{if([...document.scripts].some(s=>s.src===src))return res();let s=document.createElement('script');s.src=src;if(type)s.type=type;s.onload=res;s.onerror=rej;document.head.appendChild(s);})}
+function exportHistoryCSV(){let csv='Fecha,Modelo,Precio anterior,Precio nuevo,Venta anterior,Venta nueva,Proveedor\n'+db.history.map(h=>[h.date,h.name,h.oldCost,h.newCost,h.oldSale,h.newSale,h.supplier].map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');download('historial-precios-'+today()+'.csv',csv,'text/csv')}
+function download(name,content,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function renderHistory(){let box=document.getElementById('historyBox'); if(!box)return; box.innerHTML=db.history.length?`<table><thead><tr><th>Fecha</th><th>Modelo</th><th class="right">Base</th><th class="right">Venta</th></tr></thead><tbody>${db.history.slice(0,250).map(h=>`<tr><td>${esc(h.date)}</td><td>${esc(h.name)}<div class="small">${esc(h.supplier||'')}</div></td><td class="right">$${money(h.oldCost)} → $${money(h.newCost)}</td><td class="right">$${money(h.oldSale)} → $${money(h.newSale)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">Aún no hay historial.</div>'}
+function clearHistory(){if(confirm('¿Borrar historial?')){db.history=[];persist();renderHistory()}}
+function recalcAll(){db.items.forEach(x=>x.date=today());persist();render();alert('Recalculado con el margen general actual.')} 
+function wipeAll(){if(confirm('Esto borra modelos e historial de este navegador. ¿Seguro?')){db={settings:{margin:20},items:[],history:[]};persist();render();}}
+function installInfo(){alert('En iPhone: abre en Safari → botón Compartir → Agregar a pantalla de inicio. En Android/Chrome: menú ⋮ → Instalar app.');}
+document.getElementById('date').value=today();document.getElementById('bulkDate').value=today();render();
 </script>
 </body>
 </html>
